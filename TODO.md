@@ -33,11 +33,15 @@ Last updated: 2025-09-10
   - Wrap NS/CNAME with `hickory_proto::rr::rdata::{NS,CNAME}`
   - Convert SOA fields to expected types (i32) where required
   - Use `Arc<UdpSocket>` instead of `UdpSocket::try_clone()`
+- Add unit tests for additional RRs
+  - TXT resolution test (`txt_resolution`)
+  - MX resolution test (`mx_resolution`)
+  - Negative cases (NODATA) with authority section (`nodata_still_soans`)
 
 ## In Progress
 
-- Add more unit tests for additional RRs
-  - TXT, MX, NS variations; negative cases and multiple queries per message
+- Add more comprehensive unit tests
+  - NS record variations; multiple queries per message
 
 ## Backlog / Future Improvements
 

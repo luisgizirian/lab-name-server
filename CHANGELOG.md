@@ -4,10 +4,17 @@ All notable changes to this project will be documented in this file.
 
 ## [0.1.1] - 2025-09-10
 
+### Fixed
+- Synchronized version in `Cargo.toml` to match `CHANGELOG.md` (was 0.1.0, now 0.1.1)
+
+### Docs
+- Updated `TODO.md` to move completed TXT and MX unit tests from "In Progress" to "Completed"
+- Verified all documentation is up-to-date and consistent with current implementation
+
 ### Tests
 - Moved tests from `src/main.rs` into integration tests under `tests/` (`answers.rs`, `forwarding.rs`)
 
-### Fixed
+### Previously Fixed (Build)
 - Build failures with latest dependencies:
   - Replaced `Record::with` with `Record::from_rdata` (hickory-proto >= 0.25)
   - Wrapped NS and CNAME targets using `hickory_proto::rr::rdata::{NS,CNAME}`
@@ -15,14 +22,14 @@ All notable changes to this project will be documented in this file.
   - Removed `UdpSocket::try_clone()` usage; share socket with `Arc<UdpSocket>`
   - Fixed wildcard lookup to avoid returning references to locals
 
-### Docs
+### Previously Added (Docs)
 - Expanded README with VS Code tasks, development commands, and compatibility notes
 - Updated TODO with testing plans and cleanup tasks
   
-### Chore
+### Previously Fixed (Chore)
 - Removed unused `ZoneStore::default_ttl` field and `record_type_of` function to eliminate build warnings
 
-### Tests
+### Previously Added (Tests)
 - Added initial unit tests covering exact, wildcard, CNAME one-hop, NODATA, and a `forward_udp` echo path
 
 ## [0.1.0] - 2025-09-01
