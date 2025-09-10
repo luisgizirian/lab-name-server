@@ -1,0 +1,94 @@
+# DNS server configuration
+listen:
+  host: 0.0.0.0
+  port: 5353
+
+# Optional upstream forwarders when a query is not answered by local zones.
+# You can specify multiple; the server will try them in order.
+upstream:
+  - 1.1.1.1
+  - 8.8.8.8
+
+# Default TTL in seconds for records that don't specify one explicitly
+default_ttl: 300
+
+# Zones served authoritatively by this server.
+zones:
+  - origin: example.local.
+    ttl: 300
+    soa:
+      mname: ns1.example.local.
+      rname: hostmaster.example.local.
+      serial: 2025091001
+      refresh: 3600
+      retry: 900
+      expire: 1209600
+      minimum: 300
+    ns:
+      - ns1.example.local.
+    records:
+      - name: "@"
+        type: A
+        value: 10.10.10.10
+      - name: www
+        type: CNAME
+        value: "@"
+      - name: "@"
+        type: AAAA
+        value: "fd00::1"
+      - name: text
+        type: TXT
+        value: "hello from lab-name-server"
+      - name: mail
+        type: MX
+        preference: 10
+        value: mail.example.local.
+      - name: ns1
+        type: A
+        value: 10.10.10.53
+      - name: "*.wild"
+        type: A
+        value: 10.10.10.99
+
+  - origin: lab.
+    ttl: 60
+    soa:
+      mname: ns.lab.
+      rname: admin.lab.
+      serial: 2025091001
+      refresh: 3600
+      retry: 600
+      expire: 604800
+      minimum: 60
+    ns:
+      - ns.lab.
+    records:
+      - name: "@"
+        type: A
+        value: 192.168.56.1
+      - name: ns
+        type: A
+        value: 192.168.56.53
+
+  - origin: rust.
+    ttl: 60
+    soa:
+      mname: ns.rust.
+      rname: admin.rust.
+      serial: 2025091001
+      refresh: 3600
+      retry: 600
+      expire: 604800
+      minimum: 60
+    ns:
+      - ns.rust.
+    records:
+      - name: "@"
+        type: A
+        value: 10.0.0.10
+      - name: www
+        type: CNAME
+        value: "@"
+      - name: ns
+        type: A
+        value: 10.0.0.53

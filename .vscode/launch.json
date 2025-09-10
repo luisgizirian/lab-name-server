@@ -1,0 +1,16 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug lab-name-server (gdb)",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/target/debug/lab-name-server",
+      "args": ["--config", "config.yaml", "--log", "DEBUG"],
+      "cwd": "${workspaceFolder}",
+      "preLaunchTask": "cargo build",
+      "MIMode": "gdb",
+      "miDebuggerPath": "/usr/bin/gdb"
+    }
+  ]
+}

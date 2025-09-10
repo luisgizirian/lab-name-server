@@ -1,0 +1,24 @@
+/target/
+**/*.swp
+**/*.swo
+.DS_Store
+.env
+config.yaml
+
+# Rust / Cargo
+**/*.rs.bk
+*.rlib
+*.rmeta
+*.dSYM/
+*.pdb
+
+# Tooling configs (optional, not secrets)
+.clippy.toml
+.rustfmt.toml
+
+# Logs & coverage
+*.log
+coverage/
+
+# Devcontainer volumes (if any)
+.devcontainer/volumes/

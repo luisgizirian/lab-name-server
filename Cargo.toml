@@ -1,0 +1,21 @@
+[package]
+name = "lab-name-server"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+authors = ["Luis Gizirian <noreply@example.com>"]
+description = "A small authoritative + forwarding DNS server for labs. Built quickly with help from GitHub Copilot as a sample of its capabilities."
+repository = "https://github.com/luisgizirian/lab-name-server"
+homepage = "https://github.com/luisgizirian/lab-name-server"
+readme = "README.md"
+
+[dependencies]
+anyhow = "1"
+thiserror = "1"
+serde = { version = "1", features = ["derive"] }
+serde_yaml = "0.9"
+clap = { version = "4", features = ["derive"] }
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "net", "time"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["fmt", "env-filter"] }
+hickory-proto = { version = "0.25", default-features = false, features = ["serde"] }
